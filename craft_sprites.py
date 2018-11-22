@@ -1,6 +1,8 @@
+"""
+飞机大战工具类集
+"""
 import random
 import pygame
-
 
 SCREEN_RECT = pygame.Rect(0, 0, 480, 700)
 
@@ -22,11 +24,13 @@ class GameSprite(pygame.sprite.Sprite):
         self.speed = speed
 
     def update(self):
+        """更新位置"""
 
         self.rect.y += self.speed
 
 
 class Background(GameSprite):
+    """背景图类"""
 
     def __init__(self, is_alt=False):
         super().__init__("./images/background.png", 1)
@@ -40,6 +44,7 @@ class Background(GameSprite):
 
 
 class Enemy(GameSprite):
+    """敌机类"""
 
     def __init__(self):
         super().__init__("./images/enemy1.png")
@@ -58,6 +63,7 @@ class Enemy(GameSprite):
 
 
 class Hero(GameSprite):
+    """英雄飞机类"""
 
     def __init__(self):
         super().__init__("./images/me1.png", 0)
@@ -73,14 +79,16 @@ class Hero(GameSprite):
             self.rect.right = SCREEN_RECT.right
 
     def fire(self):
+        """发射子弹的方法"""
         for i in (0, 1):
             bullet = Bullet()
-            bullet.rect.bottom = self.rect.y - i*20
+            bullet.rect.bottom = self.rect.y - i * 20
             bullet.rect.centerx = self.rect.centerx
             self.bullets.add(bullet)
 
 
 class Bullet(GameSprite):
+    """子弹类"""
 
     def __init__(self):
         super().__init__("./images/bullet1.png", -2)

@@ -5,6 +5,7 @@ from craft_sprites import *
 
 
 class CraftWarGame():
+    """飞机大战游戏类"""
 
     def __init__(self):
         self.screen = pygame.display.set_mode(SCREEN_RECT.size)
@@ -23,6 +24,7 @@ class CraftWarGame():
         self.hero_group = pygame.sprite.Group(self.hero)
 
     def start(self):
+        """启动游戏"""
         while True:
             self.clock.tick(FRAME_PER_SECOND)
 
@@ -53,11 +55,11 @@ class CraftWarGame():
             self.hero.speed = 0
 
     def __check_collide(self):
-        pygame.sprite.groupcollide(
-            self.hero.bullets, self.enemy_group, True, True)
-        enemies = pygame.sprite.spritecollide(
-            self.hero, self.enemy_group, True)
-        if len(enemies) > 0:
+        pygame.sprite.groupcollide(self.hero.bullets, self.enemy_group, True,
+                                   True)
+        enemies = pygame.sprite.spritecollide(self.hero, self.enemy_group,
+                                              True)
+        if enemies:
             self.hero.kill()
             self.__game_over()
 
@@ -78,5 +80,5 @@ class CraftWarGame():
 
 
 if __name__ == "__main__":
-    game = CraftWarGame()
-    game.start()
+    GAME = CraftWarGame()
+    GAME.start()
