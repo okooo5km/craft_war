@@ -1,0 +1,17 @@
+[[source]]
+name = "douban"
+url = "https://pypi.doubanio.com/simple/"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+
+[packages]
+pygame = "*"
+yapf = "*"
+flake8 = "*"
+jedi = "*"
+
+[requires]
+python_version = "3.7"
